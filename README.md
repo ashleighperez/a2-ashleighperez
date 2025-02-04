@@ -52,7 +52,7 @@ Deliverables
 
 Do the following to complete this assignment and achieve a base grade of 85%:
 
-1. (5 pts) Accept this A2 assignment have Git Classroom generate your private repository. This repo contains some starter code that may be used or discarded as needed.
+1. X (5 pts) Accept this A2 assignment have Git Classroom generate your private repository. This repo contains some starter code that may be used or discarded as needed.
 2. (60 pts - see above) Implement your project with the above requirements.
 3. Test your project to make sure that when someone goes to your main page, it displays correctly.
 4. (5 pts) Temporarily make your GitHub repo public, deploy your project to Glitch, and fill in the appropriate fields in your package.json file. Make your repo private again!

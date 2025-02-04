@@ -2,14 +2,15 @@
   "name": "cs4241-c25-a2-short-stack",
   "version": "0.1.0",
   "description": "WPI CS4241-C25 Assignment A2",
-  "author": "",
+  "author": "Ashleigh Perez",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "mime": "^2.4.4"
+    "mime": "^2.4.4",
+    "mime-types": "^2.1.35"
   },
   "engines": {
-    "node":"16.x"
+    "node": "16.x"
   }
 }

@@ -1,4 +1,13 @@
 body {
-    background:black;
-    color:white;
+    background:#f1f1f1;
+    color:#010101;
+    font-family: 'Inter', sans-serif;
+    margin: 20px;
+
 }
+
+h1 {
+    color: dodgerblue;
+    font-weight: bold;
+}
+
