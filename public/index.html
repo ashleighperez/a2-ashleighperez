@@ -15,10 +15,26 @@
 </head>
 <body>
 <h1>//TODO: Your Task Assistant</h1>
+
 <hr/>
+<h2>TODO List</h2>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Task</th>
+        <th>Priority</th>
+        <th>Deadline</th>
+        <th>Days Remaining</th>
+    </tr>
+    </thead>
+    <tbody id="todo-list">
+    </tbody>
+</table>
+<hr/>
+
 <h4>Enter task details below</h4>
-<form id="task-input" class="requires-validation" novalidate>
-    <div class="invalid-feedback" id="inv">Please fill out all task details.</div>
+<form id="addtask" class="requires-validation" novalidate>
     <div class="form-group form-row">
         <div class="form-col-auto form-inline">
             <label for="task">Task:</label>
@@ -52,25 +68,28 @@
 
     </div>
 
-    <button id="submit" class="btn btn-primary btn-sm">Submit Task</button>
+    <button id="submit" class="btn btn-primary btn-sm">Add Task</button>
     <button id="reset" type="reset" class="btn btn-outline-secondary btn-sm">Reset Form</button>
 </form>
+
 <hr/>
-<h2>TODO List</h2>
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>Task</th>
-            <th>Priority</th>
-            <th>Deadline</th>
-            <th>Days Remaining</th>
-        </tr>
-        </thead>
-        <tbody id="todo-list">
-        </tbody>
-    </table>
-<hr/>
-<h2>footer</h2>
+
+<h4>Enter Task ID to delete</h4>
+<form id="deletetask" class="requires-validation" novalidate>
+
+    <div class="form-group form-row">
+        <div class="form-col-auto">
+            <input type="number" class="form-control" id="tid" placeholder="Task ID..." required>
+            <div class="invalid-feedback col-auto">
+                Please provide a valid Task ID.
+            </div>
+        </div>
+
+    </div>
+
+    <button id="delete" class="btn btn-danger btn-sm">Delete Task</button>
+    <button id="resetdelete" type="reset" class="btn btn-outline-secondary btn-sm">Reset Form</button>
+</form>
 
 </body>
 </html>

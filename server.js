@@ -8,12 +8,17 @@ const http = require( "node:http" ), // node js is a library written for us to c
     dir  = "public/",
     port = 3000
 
-const appdata = [
-    { task: 'Homework: Assignment 2', priority: 'High', deadline: '2025-02-03', daysLeft: 2 },
+// using let because const does not allow for modification
+let deadline = new Date('2025-02-03');
+let appdata = [
+    {id: 1, task: 'Homework: Assignment 2', priority: 'High', deadline: deadline.toISOString().slice(0, 10), daysLeft: Math.round((deadline.getTime() - Date.now()) / 86400000) },
 ]
+
+let nextId = 2;
 
 // let fullURL = ""
 const server = http.createServer( function( request,response ) {
+    console.log(`request received: ${request.method} ${request.url}`);
     if( request.method === "GET" ) {
         handleGet( request, response )
     }else if( request.method === "POST" ){
@@ -50,20 +55,22 @@ const handlePost = function( request, response ) {
 
     // this is the data that was sent to the server (user input)
     request.on( "end", function() {
-        let userInput = JSON.parse( dataString );
+
+        const userInput = JSON.parse( dataString );
         console.log(userInput);
 
-        // ... do something with the data here and at least generate the derived data
-        // example dataString: { task: 'test task', priority: 'Medium', deadline: '2025-02-05' }
-        // add a column for "days left" from deadline
+        if (request.url === "/submit") {
+            const deadline = new Date(userInput.deadline);
+            const daysLeft = Math.round((deadline.getTime() - Date.now()) / 86400000);
 
-        const deadline = new Date(userInput.deadline);
-        const daysLeft = Math.round((deadline.getTime() - Date.now()) / 86400000);
+            appdata.push({id:nextId++, task: userInput.task, priority: userInput.priority, deadline: userInput.deadline, daysLeft: daysLeft })
 
-        //console.log("deadline: ", deadline);
-        //console.log("days left: ", daysLeft);
+        } else if (request.url === "/delete") {
+            const tid = Number(userInput.id);
+            appdata = appdata.filter(task => task.id !== tid);
+            console.log(appdata)
+        }
 
-        appdata.push({ task: userInput.task, priority: userInput.priority, deadline: userInput.deadline, daysLeft: daysLeft })
 
         response.writeHead( 200, "OK", {"Content-Type": "text/plain" })
         response.end(JSON.stringify(appdata)) // this is the data that is sent back to the client
